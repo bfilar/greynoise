@@ -11,4 +11,7 @@ url = 'http://api.greynoise.io:8888/v1/query/list'
 
 def list_tags():
     r = requests.get(url)
-    return r.json()
+    if r.status_code == 200:
+        return r.json()['tags']
+    else:
+        return {}
