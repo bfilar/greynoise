@@ -5,8 +5,11 @@
 #
 
 import requests
+import ConfigParser
 
-url = 'http://api.greynoise.io:8888/v1/query/list'
+config = ConfigParser.ConfigParser()
+config.read('config.ini')
+url = config.get('api', 'LIST_TAGS_API')
 
 
 def list_tags():

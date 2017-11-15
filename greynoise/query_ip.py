@@ -5,13 +5,28 @@
 #
 
 import requests
+import ConfigParser
 
-url = 'http://api.greynoise.io:8888/v1/query/ip'
+config = ConfigParser.ConfigParser()
+config.read('config.ini')
+url = config.get('api', 'QUERY_IP_API')
 
 
 def query_ip(ip):
     r = requests.post(url, ({'ip': ip}))
     if r.status_code == 200:
-        return r.json()
+        return r.json()['records']
     else:
         return {}
+
+
+def query_ips(ips):
+    ips_list = []
+    for ip in ips:
+        r = requests.post(url, ({'ip': ip}))
+        if r.status_code == 200:
+            ips_list.extend(r.json()['records'])
+        else:
+            ips_list.extend([])
+
+    return ips_list
