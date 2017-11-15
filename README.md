@@ -12,9 +12,22 @@ Provides interface to 3 main queries currently supported by GreyNoise Intelligen
 
 ## Features
 The following functions are implemented:
-  - `list_tags`: List GreyNoise Intelligence Tags
-  - `query_tags`: Query all tags associated with a given IP address
-  - `query_ip`: Query all IPs that have a given tag
+  - `list_tags()`: List GreyNoise Intelligence Tags
+  - `query_tags()`: Query all tags associated with a given IP address
+  - `query_ip()`: Query all IPs that have a given tag
+
+Additional Features include:
+  - `to_dataframe()`: Put results into a Pandas DataFrame
+  - `most_common()`: Find the N most common entities in a column
+  - `plot_most_common()`: Plot most common entities
+  - `plot_time_series()`: Plot time series of `first_seen` metadata
+  
+### most_common(df, topn=20)
+![Most Common](https://github.com/phyler/greynoise/raw/master/img/most_common.png)
+  
+### time_series(df)
+![Time Series](https://github.com/phyler/greynoise/raw/master/img/time_series.png)
+
 
 ## Installation
 
